@@ -8,25 +8,31 @@
         <div class="col">
             
     <form action="" method="POST">
+        <br>
+    <button class="btn btn-primary">{{  note_form.add_note_button }}</button>
+
+    <button class="btn btn-primary"> {{ note_form.edit_button }}</button>
+    <button class="btn btn-primary"> {{ note_form.save_button }}</button>
+    <button class="btn btn-primary"> {{ note_form.delete_button }}</button>
+        <br>
+        <br>
+    {{ note_form.field }} 
     
-    <button type="submit" class="btn btn-primary" name="submit" value="add">add note</button>
-    <button type="submit" class="btn btn-primary" name="edit" value="edit">edit</button>
-    <textarea type="text" name="input" class="form-control" rows="20"></textarea>
-        
-    </form>
+    {{ note_form.hidden_tag() }}
+    </form>  
+    
           
-          </div>
+        </div>
           
-          <div class="col">
+        <div class="col">
                 
-                {% for n in notes %}
-                {{ n.text }}
-                {% endfor %}
-                
+                        {% for n in notes %}
+
+<h1 class="note_font">  {{ n.text }}</h1> created {{ n.date.strftime('%d/%m/%y %H:%M')}}  
+                        {% endfor %}
+           
         </div>      
     </div>
 </div>
- <!--    <div class="form-group">
-<label for="exampleFormControlTextarea1">Example textarea</label> 
-</div>-->
+ 
 {% endblock %}

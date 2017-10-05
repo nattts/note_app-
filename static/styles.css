@@ -4,7 +4,13 @@ body {
 
 h1{
     color:white;
+
 }
+.note_font{
+	font-size: 2em;
+}
+
+
 
 .col{
     border: 0.1px solid #6856bb;
