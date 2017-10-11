@@ -42,10 +42,11 @@ class Note_Form(Form):
 @app.route('/',methods=['GET', 'POST'])
 def index():
 	text = None
+	all_notes = Note()
 	note_form = Note_Form()
 	notes = Note.query.all()
-	#radio = note_form.radio_button.data
-	#selected_note = None
+	radio = note_form.radio_button.data
+	selected_note = None
 	#if note_form.validate_on_submit(): if note_form.validate()
 	if request.method == 'POST':
 		if note_form.add_note_button.data:
@@ -53,20 +54,22 @@ def index():
 			db.session.add(Note(text=text))
 			db.session.commit()
 			return redirect(url_for('index'))
+		
 	return render_template('index.html', note_form=note_form, notes=notes)
 
-#@app.route('/delete/<id>', methods=['GET','POST'])
-#def delete(id):
-#	note_form = Note_Form()
-#	radio = note_form.radio_button.data
-##	all_notes = Note()
-#	selected_note = None
-#	if request.method == 'POST':
-#		selected_note = all_notes.query.filter_by(id=id)
-#		db.session.delete(selected_note)
-#		db.session.commit()
-#		#return redirect(url_for('delete'))
-#	return render_template('delete.html', note_form=note_form, id=id)
+@app.route('/delete/<string:id>', methods=['GET','POST'])
+def delete(id):
+	note_form = Note_Form()
+	radio = note_form.radio_button.data
+	all_notes = Note()
+	selected_note = None
+	if request.method == 'POST':
+		#if note.form.delete_button.data:
+		selected_note = Note.query.get(id)
+		db.session.delete(selected_note)
+		db.session.commit()
+		return redirect(url_for('index'))
+	return render_template('index.html', note_form=note_form, id=id)
 
 if __name__ == '__main__':
   app.run(debug=True)

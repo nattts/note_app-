@@ -10,7 +10,7 @@
     <form action="" method="POST">
         <br>
     {{  note_form.add_note_button(class="btn btn-primary") }}
-    {{ note_form.delete_button (class="btn btn-primary") }}
+    
     {{ note_form.edit_button (class="btn btn-primary") }}
     {{ note_form.save_button (class="btn btn-primary") }}
     
@@ -28,19 +28,21 @@
         <div class="col">
                 
                         {% for n in notes %}
+            <form action="{{ url_for('delete', id=n.id) }}" method="POST">
 <div class="notes_and_radio_div">
     
-<h1 class="note_font"> {{ note_form.radio_button }} {{ n.text }}
-                    
+<h1 class="note_font"> {{ note_form.delete_button (class="btn btn-primary") }} {{ n.text }}
+              </form>      
                 
                     
                 
 
                     </h1> 
 </div>
-<div class="around_created">
+
+<span class="around_created">
 created {{ n.date.strftime('%d/%m/%y %H:%M')}}
-</div>
+</span>
                         {% endfor %}
             
         </div>      
