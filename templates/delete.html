@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col">
             
-    <form action="" method="POST">
+    <form action="{{ url_for('delete', id=id) }}" method="POST">
         <br>
     {{  note_form.add_note_button(class="btn btn-primary") }}
     {{ note_form.delete_button (class="btn btn-primary") }}
