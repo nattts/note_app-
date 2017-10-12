@@ -11,13 +11,6 @@ h1{
 	font-size: 200%;
 }
 
-
-
-.col{
-    border: 0.1px solid #6856bb;
-    
-}
-
 ul,li{
 	list-style-type: none;
 	margin: 0;
@@ -26,16 +19,7 @@ ul,li{
 
 }
 
-/*
-.notes_and_radio_div{
-	border: 4px solid pink;
-	
-}
 
-.around_created{
 
-	border: 4px solid pink;
-	display: inline-block;
-}
-*/
+
 
